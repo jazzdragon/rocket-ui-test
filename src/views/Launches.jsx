@@ -21,7 +21,7 @@ class LaunchesView extends Component {
     }
 
     const launches = launchCollection.launches.map((launch) =>
-        <Launch key={ launch.launch_id } launch={launch} />
+        <Launch key={ launch.flight_number } launch={launch} />
     );
 
     return <ul>{launches}</ul>;

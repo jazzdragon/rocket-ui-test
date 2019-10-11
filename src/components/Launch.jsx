@@ -4,7 +4,7 @@ class Launch extends Component {
 
   render() {
 
-    let launch = this.props.launch;
+    const { launch } = this.props;
 
     return (
       <li>
