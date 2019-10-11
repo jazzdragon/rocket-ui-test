@@ -4,6 +4,8 @@ import {fetchLaunchesIfNeeded} from "../actions/Launches";
 import Launch from '../components/Launch';
 
 const LaunchesView = ({ dispatch, launchesCollection, launchCollection }) => {
+  const [expnadedLaunch, setExpandedLaunch] = useState()
+
   useEffect(() => {
     fetchLaunchesIfNeeded({ dispatch, launchesCollection });
   }, [fetchLaunchesIfNeeded])
@@ -16,8 +18,17 @@ const LaunchesView = ({ dispatch, launchesCollection, launchCollection }) => {
     return <div> NO DATA </div>;
   }
 
+  const handleLaunchClick = (flightNumber) => {
+    setExpandedLaunch(flightNumber)
+  }
+
   const launches = launchCollection.launches.map((launch) =>
-      <Launch key={ launch.flight_number } launch={launch} />
+      <Launch
+        key={ launch.flight_number }
+        launch={launch}
+        isExpanded={ expnadedLaunch === launch.flight_number }
+        onClick={ () => handleLaunchClick(launch.flight_number)}
+      />
   );
 
   return (
