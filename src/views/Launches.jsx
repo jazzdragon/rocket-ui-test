@@ -20,19 +20,9 @@ class LaunchesView extends Component {
       return <div> NO DATA </div>;
     }
 
-    let launches = [];
-
-    for (let i = 0; i < launchCollection.launches.length; i++) {
-      const launch = launchCollection.launches[i];
-
-      launches.push(
-        <Launch {...{
-          key: launch.launch_id,
-          launch
-        }} />
-
-      )
-    }
+    const launches = launchCollection.launches.map((launch) =>
+        <Launch key={ launch.launch_id } launch={launch} />
+    );
 
     return <ul>{launches}</ul>;
   }
