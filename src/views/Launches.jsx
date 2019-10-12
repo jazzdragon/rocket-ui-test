@@ -20,8 +20,12 @@ const LaunchesView = ({ dispatch, launchesCollection, launchCollection, rocketIn
   }
 
   const handleLaunchClick = (flightNumber, rocketId) => {
-    fetchRocketIfNeeded({ dispatch, rocketInfo, rocketId })
-    setExpandedLaunch(flightNumber)
+    if (expnadedLaunch === flightNumber) {
+      setExpandedLaunch(null)
+    } else {
+      fetchRocketIfNeeded({ dispatch, rocketInfo, rocketId })
+      setExpandedLaunch(flightNumber)
+    }
   }
 
   const launches = launchCollection.launches.map((launch) =>
