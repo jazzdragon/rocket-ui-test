@@ -2,10 +2,11 @@ import React, { useState, useEffect } from 'react';
 import ConnectedView from './ConnectedView';
 import {fetchLaunchesIfNeeded} from "../actions/Launches";
 import Launch from '../components/Launch';
+import {fetchRocketIfNeeded} from "../actions/Rocket";
 
-const LaunchesView = ({ dispatch, launchesCollection, launchCollection }) => {
+const LaunchesView = ({ dispatch, launchesCollection, launchCollection, rocketInfo }) => {
   const [expnadedLaunch, setExpandedLaunch] = useState()
-
+  console.log(rocketInfo)
   useEffect(() => {
     fetchLaunchesIfNeeded({ dispatch, launchesCollection });
   }, [fetchLaunchesIfNeeded])
@@ -18,7 +19,8 @@ const LaunchesView = ({ dispatch, launchesCollection, launchCollection }) => {
     return <div> NO DATA </div>;
   }
 
-  const handleLaunchClick = (flightNumber) => {
+  const handleLaunchClick = (flightNumber, rocketId) => {
+    fetchRocketIfNeeded({ dispatch, rocketInfo, rocketId })
     setExpandedLaunch(flightNumber)
   }
 
@@ -27,7 +29,8 @@ const LaunchesView = ({ dispatch, launchesCollection, launchCollection }) => {
         key={ launch.flight_number }
         launch={launch}
         isExpanded={ expnadedLaunch === launch.flight_number }
-        onClick={ () => handleLaunchClick(launch.flight_number)}
+        onClick={ () => handleLaunchClick(launch.flight_number, launch.rocket.rocket_id)}
+        rocket={rocketInfo.rocket}
       />
   );
 

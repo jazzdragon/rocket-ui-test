@@ -1,8 +1,10 @@
 import { createStore, combineReducers } from 'redux';
 import launchCollection from './LaunchCollectionReducer';
+import rocketInfo from './RocketReducer';
 
 const rootReducer = combineReducers({
-  launchCollection
+  launchCollection,
+  rocketInfo,
 });
 
 const store = createStore(rootReducer);

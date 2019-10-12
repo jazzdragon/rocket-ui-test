@@ -1,14 +1,19 @@
 import React from 'react';
 
 const Launch = (
-  { onClick, launch: { mission_name, flight_number, rocket: { rocket_id }, details }, isExpanded }
+  { onClick, launch: { mission_name, flight_number, details, rocket: { rocket_id } }, rocket, isExpanded }
 ) => {
     const _renderDetails = () => {
+      if (!rocket) {
+        return <div> LOADING </div>
+      }
+
       return (
         <div>
           <p>Flight Details:</p>
           <ul>
             <li>Rocket ID: {rocket_id}</li>
+            <li>Cost Per Launch: {rocket.cost_per_launch}</li>
             <li>{details}</li>
           </ul>
         </div>
