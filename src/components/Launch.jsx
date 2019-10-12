@@ -1,10 +1,16 @@
 import React from 'react';
 
-const Launch = ({ onClick, launch: { mission_name, flight_number }, isExpanded }) => {
+const Launch = (
+  { onClick, launch: { mission_name, flight_number, rocket: { rocket_id }, details, ...ast }, isExpanded }
+) => {
     const _renderDetails = () => {
       return (
         <div>
           <p>Flight Details:</p>
+          <ul>
+            <li>Rocket ID: {rocket_id}</li>
+            <li>{details}</li>
+          </ul>
         </div>
       )
     }
