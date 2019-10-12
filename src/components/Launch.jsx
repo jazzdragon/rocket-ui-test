@@ -4,6 +4,7 @@ const Launch = (
   { onClick, launch: { mission_name, flight_number, details, rocket: { rocket_id } }, rocketInfo, isExpanded }
 ) => {
     const _renderDetails = () => {
+      // REVIEW: should this be here or only show loading on the cost_per_launch item?
       if (rocketInfo.fetching) {
         return <div> LOADING </div>
       }
