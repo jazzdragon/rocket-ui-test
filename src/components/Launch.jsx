@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Launch = (
-  { onClick, launch: { mission_name, flight_number, rocket: { rocket_id }, details, ...ast }, isExpanded }
+  { onClick, launch: { mission_name, flight_number, rocket: { rocket_id }, details }, isExpanded }
 ) => {
     const _renderDetails = () => {
       return (
