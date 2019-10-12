@@ -14,7 +14,7 @@ const Launch = (
           <ul>
             <li>Rocket ID: {rocket_id}</li>
             <li>Cost Per Launch: {rocket.cost_per_launch}</li>
-            <li>{details}</li>
+            {details && <li>{details}</li>}
           </ul>
         </div>
       )
