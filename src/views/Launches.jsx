@@ -6,7 +6,7 @@ import {fetchRocketIfNeeded} from "../actions/Rocket";
 
 const LaunchesView = ({ dispatch, launchesCollection, launchCollection, rocketInfo }) => {
   const [expnadedLaunch, setExpandedLaunch] = useState()
-  console.log(rocketInfo)
+
   useEffect(() => {
     fetchLaunchesIfNeeded({ dispatch, launchesCollection });
   }, [fetchLaunchesIfNeeded])
@@ -34,7 +34,7 @@ const LaunchesView = ({ dispatch, launchesCollection, launchCollection, rocketIn
         launch={launch}
         isExpanded={ expnadedLaunch === launch.flight_number }
         onClick={ () => handleLaunchClick(launch.flight_number, launch.rocket.rocket_id)}
-        rocket={rocketInfo.rocket}
+        rocketInfo={rocketInfo}
       />
   );
 

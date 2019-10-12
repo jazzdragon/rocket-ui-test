@@ -1,10 +1,10 @@
 import React from 'react';
 
 const Launch = (
-  { onClick, launch: { mission_name, flight_number, details, rocket: { rocket_id } }, rocket, isExpanded }
+  { onClick, launch: { mission_name, flight_number, details, rocket: { rocket_id } }, rocketInfo, isExpanded }
 ) => {
     const _renderDetails = () => {
-      if (!rocket) {
+      if (rocketInfo.fetching) {
         return <div> LOADING </div>
       }
 
@@ -13,7 +13,7 @@ const Launch = (
           <p>Flight Details:</p>
           <ul>
             <li>Rocket ID: {rocket_id}</li>
-            <li>Cost Per Launch: {rocket.cost_per_launch}</li>
+            <li>Cost Per Launch: {rocketInfo.rocket.cost_per_launch}</li>
             {details && <li>{details}</li>}
           </ul>
         </div>
